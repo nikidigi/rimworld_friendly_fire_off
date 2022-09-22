@@ -11,7 +11,7 @@ namespace FriendlyFireOff
             return thing is Pawn && (thing as Pawn).IsPrisoner;
         }
 
-        public static bool isSlave(Thing thing)
+        public static bool IsSlave(Thing thing)
         {
             return thing is Pawn && (thing as Pawn).IsSlave;
         }
