@@ -36,7 +36,7 @@ namespace FriendlyFireOff
                 return true;
             }
 
-            if (ThingHelpers.IsPrisoner(attacker) || ThingHelpers.isSlave(attacker))
+            if (ThingHelpers.IsPrisoner(attacker) || ThingHelpers.IsSlave(attacker))
             {
                 return true;
             }
