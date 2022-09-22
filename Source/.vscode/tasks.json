@@ -1,0 +1,119 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "clean:debug",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "clean",
+        "-c",
+        "Debug",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "clean:release",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "clean",
+        "-c",
+        "Release",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "clean:all",
+      "type": "shell",
+      "command": "rm -rf ./bin ./obj",
+      "windows": {
+        "command": "rm -Recurse -Force ./bin; rm -Recurse -Force ./obj"
+      },
+      "dependsOn": [
+        "clean:debug",
+        "clean:release"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+    },
+    {
+      "label": "compile:debug",
+      "command": "dotnet",
+      "type": "shell",
+      "args": [
+        "build",
+        "-c",
+        "Debug",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "compile:release",
+      "command": "dotnet",
+      "type": "shell",
+      "args": [
+        "build",
+        "-c",
+        "Release",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build:release",
+      "type": "shell",
+      "command": "mkdir -p ../Assemblies && cp ./bin/Release/FriendlyFireOff.dll ../Assemblies",
+      "windows": {
+        "command": "mkdir ../Assemblies -Force; cp ./bin/Release/FriendlyFireOff.dll ../Assemblies",
+      },
+      "dependsOn": [
+        "compile:release",
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "build:debug",
+      "type": "shell",
+      "command": "mkdir -p ../Assemblies && cp ./bin/Debug/FriendlyFireOff.dll ../Assemblies",
+      "windows": {
+        "command": "mkdir ../Assemblies -Force; cp ./bin/Debug/FriendlyFireOff.dll ../Assemblies",
+      },
+      "dependsOn": [
+        "compile:debug",
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      }
+    }
+  ]
+}

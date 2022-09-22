@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Friendly Fire Off</name>
+	<author>NIKI DIGI</author>
+	<url>https://github.com/nikidigi/rimworld_friendly_fire_off</url>
+	<packageId>nigidigi.FriendlyFireOff</packageId>
+	<supportedVersions>
+		<li>1.3</li>
+	</supportedVersions>
+	<description>Turns off friendly fire. Your colonists, animals, and colonists from neutral or allied factions won't take any damage unless you order to attack them manually. Supports ranged weapons and explosives. Works the same way for the AI. </description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+</ModMetaData>
