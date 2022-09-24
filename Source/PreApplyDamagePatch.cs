@@ -1,4 +1,5 @@
 using HarmonyLib;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -11,12 +12,12 @@ namespace FriendlyFireOff
         {
             absorbed = false;
 
-            if (dinfo.Def.isExplosive && ModSettings.disableExplosives)
+            if (dinfo.Def.isExplosive)
             {
                 return PrefixExplosive(__instance, ref dinfo, out absorbed);
             }
 
-            if (dinfo.Def.isRanged && ModSettings.disableRanged)
+            if (dinfo.Def.isRanged)
             {
                 return PrefixRanged(__instance, ref dinfo, out absorbed);
             }
@@ -36,12 +37,20 @@ namespace FriendlyFireOff
                 return true;
             }
 
+            if (ThingHelpers.IsHostileFaction(__instance, attacker))
+            {
+                return true;
+            }
+
             if (ThingHelpers.IsPrisoner(attacker) || ThingHelpers.IsSlave(attacker))
             {
                 return true;
             }
 
-            if (ThingHelpers.IsSameOrNeutralFaction(__instance, attacker))
+            bool IsPlayer = __instance.Faction?.IsPlayer == true || attacker.Faction?.IsPlayer == true;
+            bool IsHostile = __instance.Faction?.HostileTo(Faction.OfPlayer) ?? true;
+
+            if (ModSettings.IsExplosivesDisabled(IsPlayer, IsHostile))
             {
                 absorbed = true;
 
@@ -73,12 +82,20 @@ namespace FriendlyFireOff
                 return true;
             }
 
-            if (ThingHelpers.IsPrisoner(attacker) || ThingHelpers.isSlave(attacker))
+            if (ThingHelpers.IsHostileFaction(__instance, attacker))
             {
                 return true;
             }
 
-            if (ThingHelpers.IsSameOrNeutralFaction(__instance, attacker))
+            if (ThingHelpers.IsPrisoner(attacker) || ThingHelpers.IsSlave(attacker))
+            {
+                return true;
+            }
+
+            bool IsPlayer = __instance.Faction?.IsPlayer == true || attacker.Faction?.IsPlayer == true;
+            bool IsHostile = __instance.Faction?.HostileTo(Faction.OfPlayer) ?? true;
+
+            if (ModSettings.IsRangedDisabled(IsPlayer, IsHostile))
             {
                 absorbed = true;
 
