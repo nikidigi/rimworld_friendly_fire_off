@@ -6,4 +6,4 @@
 
 ___
 
-Turns off friendly fire. Your colonists, animals, and colonists from neutral or allied factions won't take any damage unless you order to attack them manually. Supports ranged weapons and explosives. Works the same way for the AI.
+Turns off friendly fire. Supports ranged weapons and explosives. When friendly fire is turned off pawns from the same faction won't hurt each other nor pawns from neutral or allied factions. Has separate settings for the Player and for the AI.
