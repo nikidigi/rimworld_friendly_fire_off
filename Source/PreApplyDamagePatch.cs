@@ -47,8 +47,8 @@ namespace FriendlyFireOff
                 return true;
             }
 
-            bool IsPlayer = __instance.Faction?.IsPlayer == true || attacker.Faction?.IsPlayer == true;
-            bool IsHostile = __instance.Faction?.HostileTo(Faction.OfPlayer) ?? true;
+            bool IsPlayer = attacker.Faction?.IsPlayer ?? false;
+            bool IsHostile = attacker.Faction?.HostileTo(Faction.OfPlayer) ?? true;
 
             if (ModSettings.IsExplosivesDisabled(IsPlayer, IsHostile))
             {
@@ -92,8 +92,8 @@ namespace FriendlyFireOff
                 return true;
             }
 
-            bool IsPlayer = __instance.Faction?.IsPlayer == true || attacker.Faction?.IsPlayer == true;
-            bool IsHostile = __instance.Faction?.HostileTo(Faction.OfPlayer) ?? true;
+            bool IsPlayer = attacker.Faction?.IsPlayer ?? false;
+            bool IsHostile = attacker.Faction?.HostileTo(Faction.OfPlayer) ?? true;
 
             if (ModSettings.IsRangedDisabled(IsPlayer, IsHostile))
             {
