@@ -36,7 +36,7 @@
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "clean:all",
+      "label": "clean",
       "type": "shell",
       "command": "rm -rf ./bin ./obj",
       "windows": {
@@ -52,24 +52,7 @@
       },
     },
     {
-      "label": "compile:debug",
-      "command": "dotnet",
-      "type": "shell",
-      "args": [
-        "build",
-        "-c",
-        "Debug",
-        "/property:GenerateFullPaths=true",
-        "/consoleloggerparameters:NoSummary"
-      ],
-      "group": "build",
-      "presentation": {
-        "reveal": "silent"
-      },
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "compile:release",
+      "label": "build",
       "command": "dotnet",
       "type": "shell",
       "args": [
@@ -86,29 +69,14 @@
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "build:release",
+      "label": "assembly",
       "type": "shell",
       "command": "mkdir -p ../Assemblies && cp ./bin/Release/FriendlyFireOff.dll ../Assemblies",
       "windows": {
         "command": "mkdir ../Assemblies -Force; cp ./bin/Release/FriendlyFireOff.dll ../Assemblies",
       },
       "dependsOn": [
-        "compile:release",
-      ],
-      "group": "build",
-      "presentation": {
-        "reveal": "silent"
-      }
-    },
-    {
-      "label": "build:debug",
-      "type": "shell",
-      "command": "mkdir -p ../Assemblies && cp ./bin/Debug/FriendlyFireOff.dll ../Assemblies",
-      "windows": {
-        "command": "mkdir ../Assemblies -Force; cp ./bin/Debug/FriendlyFireOff.dll ../Assemblies",
-      },
-      "dependsOn": [
-        "compile:debug",
+        "build",
       ],
       "group": "build",
       "presentation": {
