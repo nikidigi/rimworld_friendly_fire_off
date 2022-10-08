@@ -71,9 +71,9 @@
     {
       "label": "assembly",
       "type": "shell",
-      "command": "mkdir -p ../Assemblies && cp ./bin/Release/FriendlyFireOff.dll ../Assemblies",
+      "command": "mkdir -p ../1.3/Assemblies && cp ./bin/Release/FriendlyFireOff.dll ../1.3/Assemblies",
       "windows": {
-        "command": "mkdir ../Assemblies -Force; cp ./bin/Release/FriendlyFireOff.dll ../Assemblies",
+        "command": "mkdir ../1.3/Assemblies -Force; cp ./bin/Release/FriendlyFireOff.dll ../1.3/Assemblies",
       },
       "dependsOn": [
         "build",
