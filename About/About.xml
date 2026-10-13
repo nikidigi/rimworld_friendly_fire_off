@@ -9,6 +9,7 @@
 		<li>1.4</li>
 		<li>1.5</li>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 	<description>Turns off friendly fire. Supports ranged weapons and explosives. When friendly fire is turned off pawns from the same faction won't hurt each other nor pawns from neutral or allied factions. Has separate settings for the Player and for the AI.</description>
 	<modDependencies>
