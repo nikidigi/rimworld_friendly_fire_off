@@ -2,6 +2,15 @@
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "rimworldVersion",
+      "type": "pickString",
+      "description": "RimWorld version",
+      "options": ["1.7"],
+      "default": "1.7"
+    }
+  ],
   "tasks": [
     {
       "label": "clean:debug",
@@ -71,9 +80,9 @@
     {
       "label": "assembly",
       "type": "shell",
-      "command": "mkdir -p ../1.7/Assemblies && cp ./bin/Release/FriendlyFireOff.dll ../1.7/Assemblies",
+      "command": "mkdir -p ../${input:rimworldVersion}/Assemblies && cp ./bin/Release/FriendlyFireOff.dll ../${input:rimworldVersion}/Assemblies",
       "windows": {
-        "command": "mkdir ../1.7/Assemblies -Force; cp ./bin/Release/FriendlyFireOff.dll ../1.7/Assemblies",
+        "command": "mkdir ../${input:rimworldVersion}/Assemblies -Force; cp ./bin/Release/FriendlyFireOff.dll ../${input:rimworldVersion}/Assemblies",
       },
       "dependsOn": [
         "build",
